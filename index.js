@@ -10,7 +10,7 @@ const myDropMenu = new dropMenu({
 });
 
 myDropMenu.setList({
-  "button": "Button",
+  "button": "P2PChat",
   "list":{
     Chat: {
         click:function(){
@@ -144,13 +144,13 @@ function connect(config){
       const seq = connSeq
   
       const peerId = info.id.toString('hex')
-      log(`Connected #${seq} to peer: ${peerId}`)
+      console.log(`Connected #${seq} to peer: ${peerId}`)
 
       if (info.initiator) {
         try {
           conn.setKeepAlive(true, 600)
         } catch (exception) {
-          log('exception', exception)
+          console.log('exception', exception)
         }
       }
   
@@ -166,7 +166,7 @@ function connect(config){
   
       conn.on('close', () => {
 
-        log(`Connection ${seq} closed, peer id: ${peerId}`)
+        console.log(`Connection ${seq} closed, peer id: ${peerId}`)
 
         if (peers[peerId].seq === seq) {
           delete peers[peerId]
